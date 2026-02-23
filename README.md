@@ -1,0 +1,7 @@
+MONGO_URI=mongodb+srv://snsupratim:hOfJI8TfyiKCRPt8@cluster0.nhvcy3t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+DB_NAME=tutorClass
+PINECONE_ENV="us-east-1"
+PINECONE_INDEX_NAME="tutorclass"
+PINECONE_API_KEY=pcsk_5TSt9M_EZaADSAyEeeyNfAHEKq2ZoKq1KAkY7E4P7a4kj2GwBGriBeUxQQk1tjSPypCuk5
+GOOGLE_API_KEY=AIzaSyBeflE4pVHumiVQtOhmS6_XbXQOboum4OY
+GROQ_API_KEY=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
