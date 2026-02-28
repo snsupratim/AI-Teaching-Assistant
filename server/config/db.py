@@ -13,3 +13,4 @@ db=client[DB_NAME]
 
 # User collection
 users_collection = db["users"]
+chunk_collection=db["text"]
