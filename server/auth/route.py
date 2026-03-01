@@ -12,14 +12,14 @@ security=HTTPBasic()
 
 def authenticate(credentials:HTTPBasicCredentials=Depends(security)):
     """Authenticates a user using HTTP Basic Auth"""
-    user_record=users_collection.find_one({"username":credentials.username})
-    if not user_record or not verify_password(credentials.password,user_record["password"]):
+    user=users_collection.find_one({"username":credentials.username})
+    if not user or not verify_password(credentials.password,user.get("password")):
         raise HTTPException(status_code=401, detail="Invalid username or password")
     return {
-        "username":user_record["username"],
-        "fullname":user_record["fullname"],
-        "email":user_record["email"],
-        "role":user_record["role"],
+        "username":user.get("username"),
+        "role":user.get("role"),
+        "grade":user.get("grade"),
+        "user_id":str(user.get("_id"))
     }
 
 
