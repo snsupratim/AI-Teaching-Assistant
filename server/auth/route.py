@@ -68,4 +68,4 @@ def teacher_student(req:TeacherUser):
 @router.get("/login")
 def login(user=Depends(authenticate)):
     """Handles user login"""
-    return {"message":f"Welcome, {user}!"}
+    return {"message":f"Welcome {user['username']}","role":user["role"]}

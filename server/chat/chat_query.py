@@ -114,7 +114,7 @@ async def answer_query(query:str,user_role:str,user_grade:int)->dict:
 
 
 
-async def quiz_generation(topic:str,user_role:str,user_grade:int,num_question:int=3,)->dict:
+async def quiz_generation(topic:str,user_role:str,user_grade:int,num_questions:int=3,)->dict:
     # 1. embedding generation
     embedding=await asyncio.to_thread(embed_model.embed_query,topic)
     #  2. retrieve relevant embedding from vector db
@@ -146,7 +146,7 @@ async def quiz_generation(topic:str,user_role:str,user_grade:int,num_question:in
     # 4.5 gather response
     response= await asyncio.to_thread(
         quiz_chain.invoke,
-        {"num_quetion":num_question,"context":context}
+        {"num_questions":num_questions,"context":context}
     )
     #  5 get proper answer
     quiz_text=(
