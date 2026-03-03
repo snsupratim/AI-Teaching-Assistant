@@ -12,7 +12,9 @@ load_dotenv()
 # CONFIG
 
 BACKEND_URL = os.getenv("BACKEND_URL")
-ASSETS_DIR = "assets"
+
+BASE_DIR = os.path.dirname(__file__)
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
 st.set_page_config(
     page_title="TutorRAG",
@@ -93,10 +95,10 @@ def landing_page():
                 st.session_state.page = "login"
 
     with col2:
-        st.image(
-            f"{ASSETS_DIR}/landing-page.jpg",
-            use_container_width=True,
-        )
+        img = os.path.join(ASSETS_DIR, "landing-page.jpg")
+
+        if os.path.exists(img):
+            st.image(img, width="stretch")
 
 
 # LOGIN PAGE
@@ -105,10 +107,10 @@ def login_page():
     col1, col2 = st.columns([1, 1])
 
     with col1:
-        st.image(
-            f"{ASSETS_DIR}/login.jpg",
-            use_container_width=True,
-        )
+        img = os.path.join(ASSETS_DIR, "login.jpg")
+
+        if os.path.exists(img):
+            st.image(img, width="stretch")
 
     with col2:
         st.markdown("## 🔐 Login")
@@ -147,10 +149,10 @@ def signup_page():
     col1, col2 = st.columns([1, 1])
 
     with col1:
-        st.image(
-            f"{ASSETS_DIR}/signup.png",
-            use_container_width=True,
-        )
+        img = os.path.join(ASSETS_DIR, "signup.png")
+
+        if os.path.exists(img):
+            st.image(img, width="stretch")
 
     with col2:
         st.markdown("## ✍️ Create Account")
@@ -196,10 +198,10 @@ def signup_page():
 # TEACHER DASHBOARD
 
 def teacher_dashboard():
-    st.image(
-        f"{ASSETS_DIR}/teacher.jpg",
-        width=220,
-    )
+    img = os.path.join(ASSETS_DIR, "teacher.jpg")
+
+    if os.path.exists(img):
+        st.image(img, width=220)
     st.markdown("## 📚 Upload Study Material")
 
     pdf = st.file_uploader("Upload PDF", type="pdf")
@@ -226,10 +228,10 @@ def teacher_dashboard():
 # STUDENT DASHBOARD
 
 def student_dashboard():
-    st.image(
-        f"{ASSETS_DIR}/students.jpg",
-        width=220,
-    )
+    img = os.path.join(ASSETS_DIR, "students.jpg")
+
+    if os.path.exists(img):
+        st.image(img, width=220)
 
     chat_tab, quiz_tab, history_tab = st.tabs(
         ["💬 Ask Questions", "📝 Quiz Generator", "📜 Quiz History"]
